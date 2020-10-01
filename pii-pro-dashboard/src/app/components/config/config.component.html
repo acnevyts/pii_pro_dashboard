@@ -1,0 +1,139 @@
+<ngb-accordion #acc="ngbAccordion">
+  <ngb-panel title="Metadata">
+    <ng-template ngbPanelContent>
+      <div class="input-group mb-3">
+        <!-- <div class="input-group-prepend"> -->
+        <label class="input-group-addon" id="inputGroup-sizing-default"
+          >Doc Type</label
+        >
+        <!-- </div> -->
+        <input
+          type="text"
+          class="form-control"
+          text="config.docType"
+          aria-label="DocType"
+          aria-describedby="inputGroup-sizing-default"
+          [(ngModel)]="config.docType"
+          name="docType"
+        />
+      </div>
+      <div class="input-group mb-3">
+        <!-- <div class="input-group-prepend"> -->
+        <label class="input-group-addon" id="inputGroup-sizing-default"
+          >Version</label
+        >
+        <!-- </div> -->
+        <input
+          type="text"
+          class="form-control"
+          aria-label="Default"
+          aria-describedby="inputGroup-sizing-default"
+          [(ngModel)]="config.Version"
+          name="version"
+        />
+      </div>
+      <div class="input-group mb-3">
+        <!-- <div class="input-group-prepend"> -->
+        <label class="input-group-addon" id="inputGroup-sizing-default"
+          >Bucket Name</label
+        >
+        <!-- </div> -->
+        <input
+          type="text"
+          class="form-control"
+          aria-label="Default"
+          aria-describedby="inputGroup-sizing-default"
+          [(ngModel)]="config.BucketName"
+          name="bucketName"
+        />
+      </div>
+    </ng-template>
+  </ngb-panel>
+  <ngb-panel title="PII Detection">
+    <ng-template ngbPanelContent>
+      <div class="input-group mb-3">
+        <!-- <div class="input-group-prepend"> -->
+        <label class="input-group-addon" id="inputGroup-sizing-default"
+          >Collection Delimeter</label
+        >
+        <!-- </div> -->
+        <input
+          type="text"
+          class="form-control"
+          aria-label="Default"
+          aria-describedby="inputGroup-sizing-default"
+          [(ngModel)]="config.Config.collectionDelimeter"
+          name="collectionDelimeter"
+        />
+      </div>
+      <p>
+        <button
+          type="button"
+          class="btn btn-outline-primary"
+          (click)="isCollapsed = !isCollapsed"
+          [attr.aria-expanded]="!isCollapsed"
+          aria-controls="collapseExample"
+        >
+          {{ isCollapsed ? "Show" : "Hide" }} PII Config
+        </button>
+      </p>
+      <div class="row">
+        <div *ngFor="let piiConfig of config.Config.PIIData" class="col-6">
+          <app-jsonp-config
+            [isCollapsed]="isCollapsed"
+            [piiConfig]="piiConfig"
+          ></app-jsonp-config>
+        </div>
+      </div>
+      <p>
+        <button
+          type="button"
+          class="btn btn-outline-primary"
+          (click)="isFreeTextCollapsed = !isFreeTextCollapsed"
+          [attr.aria-expanded]="!isFreeTextCollapsed"
+          aria-controls="collapseExample"
+        >
+          {{ isFreeTextCollapsed ? "Show" : "Hide" }} Free Text Config
+        </button>
+      </p>
+      <div class="row">
+        <div
+          *ngFor="let piiConfig of config.Config.freeTextFields"
+          class="col-6"
+        >
+          <app-jsonp-config
+            [isCollapsed]="isFreeTextCollapsed"
+            [piiConfig]="piiConfig"
+          ></app-jsonp-config>
+        </div>
+      </div>
+    </ng-template>
+  </ngb-panel>
+  <ngb-panel title="Rehydration">
+    <ng-template ngbPanelContent>
+      <p>
+        <button
+          type="button"
+          class="btn btn-outline-primary"
+          (click)="isProfilesCollapsed = !isProfilesCollapsed"
+          [attr.aria-expanded]="!isProfilesCollapsed"
+          aria-controls="collapseExample"
+        >
+          {{ isProfilesCollapsed ? "Show" : "Hide" }} Rehydration Profiles
+        </button>
+      </p>
+      <div class="row">
+        <div
+          *ngFor="let profile of keys(config.Config.RehydrationProfiles)"
+          class="col-12"
+        >
+          <app-rehydration-profile
+            [isCollapsed]="isProfilesCollapsed"
+            [name]="profile"
+            [config]="config"
+          ></app-rehydration-profile>
+        </div>
+      </div>
+    </ng-template>
+  </ngb-panel>
+</ngb-accordion>

@@ -1,0 +1,56 @@
+<div id="collapseExample" [ngbCollapse]="isCollapsed">
+  <div class="card">
+    <div class="card-body">
+      <div class="input-group mb-3">
+        <!-- <div class="input-group-prepend"> -->
+        <label class="input-group-addon" id="inputGroup-sizing-default"
+          >JsonPath</label
+        >
+        <!-- </div> -->
+        <input
+          type="text"
+          class="form-control"
+          aria-label="Default"
+          aria-describedby="inputGroup-sizing-default"
+          [(ngModel)]="piiConfig.jsonPath"
+          name="jsonPath"
+        />
+      </div>
+      <div class="input-group mb-3">
+        <!-- <div class="input-group-prepend"> -->
+        <label class="input-group-addon" id="inputGroup-sizing-default"
+          >PII Type</label
+        >
+        <!-- </div> -->
+        <input
+          type="text"
+          class="form-control"
+          aria-label="Default"
+          aria-describedby="inputGroup-sizing-default"
+          [(ngModel)]="piiConfig.pii_type"
+          name="piiType"
+        />
+      </div>
+      <div class="input-group mb-3">
+        <label class="input-group-addon" id="inputGroup-sizing-default"
+          >Identifiable</label
+        >
+        <input
+          type="checkbox"
+          aria-label="is Identifiable"
+          [(ngModel)]="piiConfig.identifiable"
+        />
+      </div>
+      <div class="input-group mb-3">
+        <label class="input-group-addon" id="inputGroup-sizing-default"
+          >Different Person</label
+        >
+        <input
+          type="checkbox"
+          aria-label="is different person"
+          [(ngModel)]="piiConfig.isDifferentPerson"
+        />
+      </div>
+    </div>
+  </div>
+</div>

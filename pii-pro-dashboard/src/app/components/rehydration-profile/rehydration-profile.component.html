@@ -1,0 +1,51 @@
+<div id="collapseExample" [ngbCollapse]="isCollapsed">
+  <div class="card">
+    <div class="card-body">
+      <h3>{{ name }}</h3>
+      <div class="btn-group-vertical" role="group" aria-label="Basic example">
+        <div class="row">
+          <div class="span2">
+            <button
+              type="button"
+              class="btn btn-secondary btn-block"
+              [ngClass]="{ active: includesPressed }"
+              (click)="includesPressed = true; excludesPressed = false"
+            >
+              Includes
+            </button>
+          </div>
+          <div *ngIf="includesPressed">
+            <ng-select
+              [items]="piiTypes"
+              bindLabel="name"
+              placeholder="Select item"
+              multiple="true"
+              [(ngModel)]="includes"
+            ></ng-select>
+          </div>
+        </div>
+        <div class="row">
+          <div class="span2">
+            <button
+              type="button"
+              class="btn btn-secondary btn-block"
+              [ngClass]="{ active: excludesPressed }"
+              (click)="includesPressed = false; excludesPressed = true"
+            >
+              Excludes
+            </button>
+          </div>
+          <div *ngIf="excludesPressed">
+            <ng-select
+              [items]="piiTypes"
+              bindLabel="name"
+              placeholder="Select item"
+              multiple="true"
+              [(ngModel)]="excludes"
+            ></ng-select>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

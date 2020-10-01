@@ -1,0 +1,29 @@
+<app-header></app-header>
+<!-- <app-side-nav></app- side-nav> -->
+<div class="">
+  <div class="row">
+    <div class="col-3">
+      <ul class="list-group">
+        <li
+          *ngFor="let config of configurations"
+          class="list-group-item"
+          [ngClass]="{ active: selected == config }"
+          (click)="selected = config"
+        >
+          {{ config.displayName }}
+        </li>
+      </ul>
+      <!-- <div>
+        <div class="row panel panel-default">
+          <span class="panel-body" (click)="selected = config">{{
+            config.docType
+          }}</span>
+        </div>
+      </div> -->
+    </div>
+    <div *ngIf="selected" class="col-8">
+      <app-config [config]="selected"></app-config>
+    </div>
+  </div>
+</div>
+<!-- <app-footer></app-footer> -->
