@@ -12,6 +12,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { JsonpConfigComponent } from './components/jsonp-config/jsonp-config.component';
 import { RehydrationProfileComponent } from './components/rehydration-profile/rehydration-profile.component';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { JsonPathHighlightPipe } from './pipes/json-path-highlight.pipe';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
     SideNavComponent,
     JsonpConfigComponent,
     RehydrationProfileComponent,
+    JsonPathHighlightPipe,
   ],
   imports: [
     BrowserModule,

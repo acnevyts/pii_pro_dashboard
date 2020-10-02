@@ -24,6 +24,9 @@
     <div *ngIf="selected" class="col-8">
       <app-config [config]="selected"></app-config>
     </div>
+    <div *nfIf="!selected" class="col-8">
+      Select a DocType to view Configuration
+    </div>
   </div>
 </div>
 <!-- <app-footer></app-footer> -->
